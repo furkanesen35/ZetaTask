@@ -1,15 +1,16 @@
 import React,{useState,useEffect} from "react";
 import axios from "axios"
+import ReadOnly from "./components/ReadOnly";
 
 function App() {
  const [fetched, setFetched] = useState([]);
+ const [edit, setEdit] = useState(true);
  useEffect(() => {
   getData();
  }, [])
  const getData = () => {
   axios.get("https://633acdc6471b8c3955755ac0.mockapi.io/blog").then(res=>setFetched(res.data))
  }
- console.log(fetched);
  
  return (
   <div className="App">
@@ -25,13 +26,9 @@ function App() {
      </thead>
      <tbody>
       {fetched.map((item,index) => {
-        return (
-         <tr key={index}>
-          <td>{item.id}</td>
-          <td>{item.name}</td>
-          <td>{item.desc}</td>
-         </tr>
-        )
+       return (
+        <ReadOnly index={index} id={item.id} name={item.name} desc={item.desc} />
+       )
       })}
      </tbody>
     </table>
