@@ -23,6 +23,17 @@ function App() {
         <th>action</th>
       </tr>
      </thead>
+     <tbody>
+      {fetched.map((item,index) => {
+        return (
+         <tr key={index}>
+          <td>{item.id}</td>
+          <td>{item.name}</td>
+          <td>{item.desc}</td>
+         </tr>
+        )
+      })}
+     </tbody>
     </table>
    </form>
   </div>
