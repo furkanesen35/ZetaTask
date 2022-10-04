@@ -4,6 +4,10 @@ const EditPage = ({index,id,name,desc,edit,setEdit}) => {
  const [updateId, setUpdateId] = useState(id)
  const [updateName, setUpdateName] = useState(name)
  const [updateDesc, setUpdateDesc] = useState(desc)
+ const done = (e) => {
+  e.preventDefault()
+  setEdit(!edit)
+ }
  return (
   <>
    <tr>
@@ -38,8 +42,8 @@ const EditPage = ({index,id,name,desc,edit,setEdit}) => {
      />
     </td>
     <td>
-     <button>Save</button>
-     <button>Cancel</button>
+     <button onClick={(e)=>done(e)} >Save</button>
+     <button onClick={(e)=>done(e)}>Cancel</button>
     </td>
    </tr>
   </>
