@@ -1,10 +1,11 @@
 import React,{useState,useEffect} from "react";
 import axios from "axios"
 import ReadOnly from "./components/ReadOnly";
+import EditPage from "./components/EditPage";
 
 function App() {
  const [fetched, setFetched] = useState([]);
- const [edit, setEdit] = useState(true);
+ const [edit, setEdit] = useState(false);
  useEffect(() => {
   getData();
  }, [])
@@ -26,10 +27,12 @@ function App() {
      </thead>
      <tbody>
       {fetched.map((item,index) => {
-       return (
-        <ReadOnly index={index} id={item.id} name={item.name} desc={item.desc} />
+       return (edit ? (
+        <ReadOnly index={index} id={item.id} name={item.name} desc={item.desc} edit={edit} setEdit={setEdit}/>
+       ):(
+        <EditPage index={index} id={item.id} name={item.name} desc={item.desc} edit={edit} setEdit={setEdit}/>
        )
-      })}
+       )})}
      </tbody>
     </table>
    </form>
