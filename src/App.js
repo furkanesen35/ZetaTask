@@ -18,10 +18,10 @@ function App() {
     <table>
      <thead>
       <tr>
-        <th>id</th>
-        <th>name</th>
-        <th>description</th>
-        <th>action</th>
+       <th>id</th>
+       <th>name</th>
+       <th>description</th>
+       <th>action</th>
       </tr>
      </thead>
      <tbody>
