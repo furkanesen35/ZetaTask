@@ -5,7 +5,9 @@ const EditPage = ({index,id,name,desc,edit,setEdit}) => {
  const [updateName, setUpdateName] = useState(name)
  const [updateDesc, setUpdateDesc] = useState(desc)
  const done = (e) => {
+  let trgt = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.lastElementChild
   e.preventDefault()
+  console.log(trgt);
   setEdit(!edit)
  }
  return (
@@ -16,7 +18,7 @@ const EditPage = ({index,id,name,desc,edit,setEdit}) => {
        type="number"
        required
        placeholder="Enter an id..."
-       name="idinp"
+       name=""
        value={updateId}
        onChange={(e)=>setUpdateId(e.target.value)}
      />
@@ -26,7 +28,7 @@ const EditPage = ({index,id,name,desc,edit,setEdit}) => {
        type="text"
        required
        placeholder="Enter an id..."
-       name="idinp"
+       name=""
        value={updateName}
        onChange={(e)=>setUpdateName(e.target.value)} 
      />
@@ -36,13 +38,13 @@ const EditPage = ({index,id,name,desc,edit,setEdit}) => {
        type="text"
        required
        placeholder="Enter an id..."
-       name="idinp"
+       name=""
        value={updateDesc}
        onChange={(e)=>setUpdateDesc(e.target.value)}
      />
     </td>
     <td>
-     <button onClick={(e)=>done(e)} >Save</button>
+     <button onClick={(e)=>done(e)}>Save</button>
      <button onClick={(e)=>done(e)}>Cancel</button>
     </td>
    </tr>
