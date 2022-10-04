@@ -1,6 +1,9 @@
+import axios from 'axios';
 import React,{useState} from 'react'
+import EditPage from "./EditPage";
 
-const ReadOnly = ({index,id,name,desc,edit,setEdit}) => {
+const ReadOnly = ({index,id,name,desc,getData}) => {
+ const [edit, setEdit] = useState(false);
  const [readMore, setReadMore] = useState(true)
  const reading = (e) => {
   e.preventDefault();
@@ -10,9 +13,14 @@ const ReadOnly = ({index,id,name,desc,edit,setEdit}) => {
   e.preventDefault()
   setEdit(!edit);
  }
+ const deleteRow = (e) => {
+  e.preventDefault()
+  axios.delete(`https://633acdc6471b8c3955755ac0.mockapi.io/blog/${id}`).then(res=>console.log(res))
+  getData()
+ }
 
  return (
-  <>
+  <>{edit ? (<EditPage index={index} id={id} name={name} desc={desc} edit={edit} setEdit={setEdit} getData={getData}/>) : (
    <tr key={index}>
     <td>{id}</td>
     <td>{name}</td>
@@ -23,9 +31,11 @@ const ReadOnly = ({index,id,name,desc,edit,setEdit}) => {
     )}
     <td>
      <button onClick={(e)=>update(e)}>Edit</button>
-     <button>Delete</button>
+     <button onClick={(e)=>deleteRow(e)} >Delete</button>
     </td>
    </tr>
+  )}
+
   </>
  )
 }
