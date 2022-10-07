@@ -5,9 +5,10 @@ import Pagination from "./components/Pagination";
 
 
 function App() {
+ const [tab, setTab] = useState(1);
  const [fetched, setFetched] = useState([]);
  const [currentPage, setCurrentPage] = useState(1);
- const [postsPerPage, setPostsPerPage] = useState(5)
+ const [postsPerPage] = useState(5)
  const [search, setSearch] = useState(""); 
  useEffect(() => {
   getData();
@@ -31,6 +32,9 @@ function App() {
 
  return (
   <div className="App">
+   <div>
+    sadasd
+   </div>
    <form action="">
     <table>
      <thead>

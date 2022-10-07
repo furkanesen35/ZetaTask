@@ -24,7 +24,7 @@ const EditPage = ({id,name,desc,edit,setEdit,getData}) => {
      {id}
     </td>
     <td>
-     <input 
+     <input
        type="text"
        required
        placeholder="Enter an id..."

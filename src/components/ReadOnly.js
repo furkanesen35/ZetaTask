@@ -14,8 +14,7 @@ const ReadOnly = ({index,id,name,desc,getData}) => {
   setEdit(!edit);
  }
  const deleteRow = (e) => {
-  e.preventDefault()
-  axios.delete(`https://633acdc6471b8c3955755ac0.mockapi.io/blog/${id}`).then(res=>console.log(res))
+  axios.delete(`https://633acdc6471b8c3955755ac0.mockapi.io/blog/${id}`)
   getData()
  }
 
