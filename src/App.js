@@ -7,7 +7,7 @@ import Pagination from "./components/Pagination";
 function App() {
  const [fetched, setFetched] = useState([]);
  const [currentPage, setCurrentPage] = useState(1);
- const [postsPerPage, setPostsPerPage] = useState(15)
+ const [postsPerPage, setPostsPerPage] = useState(5)
  const [search, setSearch] = useState(""); 
  useEffect(() => {
   getData();
@@ -25,6 +25,9 @@ function App() {
  const indexOfLastPost = currentPage * postsPerPage;
  const indexOfFirstPost = indexOfLastPost - postsPerPage;
  const currentPost = fetched.slice(indexOfFirstPost,indexOfLastPost);
+ const paginate = (pageNumbers) => {
+  setCurrentPage(pageNumbers)
+ }
 
  return (
   <div className="App">
@@ -55,6 +58,7 @@ function App() {
      onChange={(e)=>setSearch(e.target.value)} 
    />
    <button onClick={handleSearch}>Search</button>
+   <Pagination postsPerPage={postsPerPage} totalPosts={fetched.length} paginate={paginate} />
   </div>
  );
 }
