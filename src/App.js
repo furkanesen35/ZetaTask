@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import axios from "axios"
 import ReadOnly from "./components/ReadOnly";
+import Pagination from "./components/Pagination";
 
 
 function App() {
@@ -35,7 +36,10 @@ function App() {
      <tbody>
       {fetched.map((item,index) => {
        return (
-        <ReadOnly key={index} index={index} id={item.id} name={item.name} desc={item.desc} getData={getData} />
+        <>
+         <ReadOnly key={index} index={index} id={item.id} name={item.name} desc={item.desc} getData={getData} />
+         <Pagination />
+        </>
        )})}
      </tbody>
     </table>
