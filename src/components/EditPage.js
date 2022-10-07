@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import axios from "axios"
 
-const EditPage = ({index,id,name,desc,edit,setEdit,getData}) => {
+const EditPage = ({id,name,desc,edit,setEdit,getData}) => {
  const [updateName, setUpdateName] = useState(name)
  const [updateDesc, setUpdateDesc] = useState(desc)
  const done = (e) => {
@@ -10,9 +10,12 @@ const EditPage = ({index,id,name,desc,edit,setEdit,getData}) => {
    id : id,
    name : updateName
   }
-  axios.put(`https://633acdc6471b8c3955755ac0.mockapi.io/blog/${id}`,datum).then(res => console.log(res))
-  getData();
+  if (e.target.innerText === "Save") {
+   axios.put(`https://633acdc6471b8c3955755ac0.mockapi.io/blog/${id}`,datum)
+   getData();
+  }
   setEdit(!edit)
+  console.log(e.target.innerText);
  }
  return (
   <>

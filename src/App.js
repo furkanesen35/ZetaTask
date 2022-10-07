@@ -6,6 +6,8 @@ import Pagination from "./components/Pagination";
 
 function App() {
  const [fetched, setFetched] = useState([]);
+ const [currentPage, setCurrentPage] = useState(1);
+ const [postsPerPage, setPostsPerPage] = useState(15)
  const [search, setSearch] = useState(""); 
  useEffect(() => {
   getData();
@@ -20,6 +22,9 @@ function App() {
  const handleSearch = () => {
   axios.get(`https://633acdc6471b8c3955755ac0.mockapi.io/blog?search=${search}`).then(res=>setFetched(res.data))
  }
+ const indexOfLastPost = currentPage * postsPerPage;
+ const indexOfFirstPost = indexOfLastPost - postsPerPage;
+ const currentPost = fetched.slice(indexOfFirstPost,indexOfLastPost);
 
  return (
   <div className="App">
@@ -34,11 +39,10 @@ function App() {
       </tr>
      </thead>
      <tbody>
-      {fetched.map((item,index) => {
+      {currentPost.map((item,index) => {
        return (
         <>
          <ReadOnly key={index} index={index} id={item.id} name={item.name} desc={item.desc} getData={getData} />
-         <Pagination />
         </>
        )})}
      </tbody>

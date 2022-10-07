@@ -21,7 +21,7 @@ const ReadOnly = ({index,id,name,desc,getData}) => {
 
  return (
   <>{edit ? (<EditPage index={index} id={id} name={name} desc={desc} edit={edit} setEdit={setEdit} getData={getData}/>) : (
-   <tr key={index}>
+   <tr key={id}>
     <td>{id}</td>
     <td>{name}</td>
     {readMore ? (
