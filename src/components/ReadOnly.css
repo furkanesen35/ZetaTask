@@ -1,0 +1,12 @@
+.id{
+ text-align: center;
+}
+.name{
+ text-align: center;
+}
+.read{
+ border: none;
+ background-color: cyan;
+ cursor: pointer;
+ color: #00000070;
+}

@@ -2,10 +2,11 @@ import React,{useState,useEffect} from "react";
 import axios from "axios"
 import ReadOnly from "./components/ReadOnly";
 import Pagination from "./components/Pagination";
+import "./App.css"
 
 
 function App() {
- const [tab, setTab] = useState(1);
+ const [tab, setTab] = useState(true);
  const [fetched, setFetched] = useState([]);
  const [currentPage, setCurrentPage] = useState(1);
  const [postsPerPage] = useState(5)
@@ -33,16 +34,20 @@ function App() {
  return (
   <div className="App">
    <div>
-    sadasd
+    <div className="tab">
+     <div className="tab1"><button onClick={()=>setTab(true)} className="tabbtn">1.tab</button></div>
+     <div className="tab1"><button onClick={()=>setTab(false)} className="tabbtn">2.tab</button></div>
+    </div>
    </div>
-   <form action="">
-    <table>
+   { tab ? (
+   <form action="" className="form">
+    <table className="table">
      <thead>
       <tr>
-       <th>id</th>
-       <th onClick={(e)=>(sortByName(e))}>name</th>
-       <th>description</th>
-       <th>action</th>
+       <th className="id">id</th>
+       <th className="name" onClick={(e)=>(sortByName(e))}>name</th>
+       <th className="description">description</th>
+       <th className="action">action</th>
       </tr>
      </thead>
      <tbody>
@@ -54,14 +59,22 @@ function App() {
        )})}
      </tbody>
     </table>
-   </form>
-   <input 
-     type="text" 
-     placeholder="Enter your search" 
-     value={search} 
-     onChange={(e)=>setSearch(e.target.value)} 
-   />
-   <button onClick={handleSearch}>Search</button>
+   </form> ) : ( 
+   <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+   </table>
+   )}
+   <div>
+    <input type="text" placeholder="Enter your search" value={search} onChange={(e)=>setSearch(e.target.value)}/>
+    <button onClick={handleSearch}>Search</button>
+   </div>
    <Pagination postsPerPage={postsPerPage} totalPosts={fetched.length} paginate={paginate} />
   </div>
  );

@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import axios from "axios"
+import "./EditPage.css"
 
 const EditPage = ({id,name,desc,edit,setEdit,getData}) => {
  const [updateName, setUpdateName] = useState(name)
@@ -23,25 +24,11 @@ const EditPage = ({id,name,desc,edit,setEdit,getData}) => {
     <td>
      {id}
     </td>
-    <td>
-     <input
-       type="text"
-       required
-       placeholder="Enter an id..."
-       name=""
-       value={updateName}
-       onChange={(e)=>setUpdateName(e.target.value)} 
-     />
+    <td className='name'>
+     <input type="text"  required placeholder="Enter an id..." name="" value={updateName} onChange={(e)=>setUpdateName(e.target.value)}/>
     </td>
-    <td>
-     <input 
-       type="text"
-       required
-       placeholder="Enter an id..."
-       name=""
-       value={updateDesc}
-       onChange={(e)=>setUpdateDesc(e.target.value)}
-     />
+    <td className='description'>
+     <input type="text"  required placeholder="Enter an id..." name="" value={updateDesc} onChange={(e)=>setUpdateDesc(e.target.value)}/>
     </td>
     <td>
      <button onClick={(e)=>done(e)}>Save</button>
